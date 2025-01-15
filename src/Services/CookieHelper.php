@@ -3,7 +3,7 @@
 namespace Osiset\ShopifyApp\Services;
 
 use Illuminate\Support\Facades\Config;
-use Jenssegers\Agent\Agent;
+use Osiset\ShopifyApp\Agent;
 
 /**
  * Helper for dealing with cookie and cookie issues.
@@ -111,13 +111,13 @@ class CookieHelper
     /**
      * Create a versioned array from a source.
      *
-     * @param string $source The source string to version.
+     * @param string|null $source The source string to version.
      *
      * @return array
      */
-    protected function version(string $source): array
+    protected function version(string | null $source): array
     {
-        $version = $this->agent->version($source);
+        $version = $source ? $this->agent->version($source) : null;
         $pieces = explode('.', str_replace('_', '.', $version));
 
         return [

@@ -55,7 +55,7 @@ class CookieHelperTest extends TestCase
      */
     public function testSameSiteCookie(): void
     {
-        foreach ($this->badUserAgents as $agent) {
+        foreach ($this->badUserAgents as $agent) { 
             $_SERVER['HTTP_USER_AGENT'] = $agent;
             $ch = $this->app->make(CookieHelper::class);
 
